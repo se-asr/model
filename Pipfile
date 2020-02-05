@@ -1,0 +1,28 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+tensorflow = "==1.14.0"
+numpy = "==1.15.4"
+progressbar2 = "*"
+pandas = "*"
+six = "*"
+pyxdg = "*"
+attrdict = "*"
+absl-py = "*"
+webrtcvad = "*"
+sox = "*"
+bs4 = "*"
+requests = "*"
+librosa = "*"
+paramiko = ">=2.1"
+scipy = "*"
+matplotlib = "*"
+SoundFile = "*"
+
+[requires]
+python_version = "3.6"
