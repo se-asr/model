@@ -67,4 +67,5 @@ python -u DeepSpeech.py \
   --lm_binary_path ../lm/wikilm5gramtrie.binary \
   --lm_trie_path ../lm/wikilm5gramtrie.trie \
   --export_language sv \
+  --use_cudnn_rnn \
   "$@"
