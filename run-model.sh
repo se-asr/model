@@ -68,4 +68,5 @@ python -u DeepSpeech.py \
   --lm_trie_path ../lm/wikilm5gramtrie.trie \
   --export_language sv \
   --use_cudnn_rnn \
+  --automatic_mixed_precision=True \
   "$@"
