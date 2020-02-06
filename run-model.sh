@@ -51,12 +51,10 @@ python -u DeepSpeech.py \
   --train_batch_size 32 \
   --dev_batch_size 32 \
   --test_batch_size 32 \
+  --test_output_file "${MODEL_DIR}/test-output" \
   --n_hidden 2048 \
   --epochs 75 \
   --early_stop True \
-  --es_steps 6 \
-  --es_mean_th 0.1 \
-  --es_std_th 0.1 \
   --dropout_rate 0.20 \
   --learning_rate 0.0001 \
   --report_count 100 \
