@@ -5,6 +5,11 @@ CHECKPOINT_DIR="${EXPORT_DIR}checkpoint/"
 MODEL_DIR="${EXPORT_DIR}model/"
 SUMMARY_DIR="${EXPORT_DIR}tensorboard/"
 
+TRAIN_FILES="../NST/train.csv"
+DEV_FILES="../NST/dev.csv"
+#TEST_FILE="../NST/test.csv"
+TEST_FILES="../NST/dev.csv"
+
 if [ ! -f DeepSpeech.py ]; then
     echo "Please make sure you run this from DeepSpeech's top level directory."
     exit 1
@@ -45,12 +50,12 @@ mkdir "${SUMMARY_DIR}"
 echo "Running model ${UUID}"
 
 python -u DeepSpeech.py \
-  --train_files ../NST/train.csv \
-  --dev_files ../NST/dev.csv \
-  --test_files ../NST/test.csv \
-  --train_batch_size 32 \
-  --dev_batch_size 32 \
-  --test_batch_size 32 \
+  --train_files "$TRAIN_FILES" \
+  --dev_files "$DEV_FILES" \
+  --test_files "$TEST_FILES" \
+  --train_batch_size 64 \
+  --dev_batch_size 64 \
+  --test_batch_size 64 \
   --test_output_file "${MODEL_DIR}/test-output" \
   --n_hidden 2048 \
   --epochs 75 \
