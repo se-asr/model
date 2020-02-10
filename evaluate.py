@@ -147,7 +147,8 @@ def evaluate(test_csvs, create_model, try_loading):
                 print(' - src: "%s"' % sample.src)
                 print(' - res: "%s"' % sample.res)
                 print('-' * 80)
-
+            print('Test on %s - WER: %f, CER: %f, loss: %f' %
+                  (dataset, wer, cer, mean_loss))
             return samples
 
         samples = []
