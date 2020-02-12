@@ -98,7 +98,7 @@ def initialize_globals():
 
     # Units in the sixth layer = number of characters in the target language plus one
     c.n_hidden_6 = c.alphabet.size() + 1 # +1 for CTC blank label
-
+    c.n_hidden_6b = c.n_hidden_6 + 3
     # Size of audio window in samples
     if (FLAGS.feature_win_len * FLAGS.audio_sample_rate) % 1000 != 0:
         log_error('--feature_win_len value ({}) in milliseconds ({}) multiplied '

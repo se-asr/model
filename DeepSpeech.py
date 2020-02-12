@@ -191,15 +191,17 @@ def create_model(batch_x, seq_length, dropout, reuse=False, batch_size=None, pre
 
     # Now we apply a final linear layer creating `n_classes` dimensional vectors, the logits.
     layers['layer_6'] = layer_6 = dense('layer_6', layer_5, Config.n_hidden_6, relu=False)
+    layers['layer_6b'] = layer_6b = dense('layer_6b', layer_5, Config.n_hidden_6b, relu=False)
 
     # Finally we reshape layer_6 from a tensor of shape [n_steps*batch_size, n_hidden_6]
     # to the slightly more useful shape [n_steps, batch_size, n_hidden_6].
     # Note, that this differs from the input in that it is time-major.
     layer_6 = tf.reshape(layer_6, [-1, batch_size, Config.n_hidden_6], name='raw_logits')
     layers['raw_logits'] = layer_6
-
+    layer_6b = tf.reshape(layer_6b, [-1, batch_size, Config.n_hidden_6], name='raw_logits_b')
+    layers['raw_logits_b'] = layer_6b
     # Output shape: [n_steps, batch_size, n_hidden_6]
-    return layer_6, layers
+    return layer_6b, layers
 
 
 # Accuracy and Loss
@@ -938,8 +940,86 @@ def do_single_file_inference(input_file_path):
         print(decoded[0][1])
 
 
+def replace_output_layer():
+
+    tfv1.reset_default_graph()
+    tfv1.set_random_seed(FLAGS.random_seed)
+
+    do_cache_dataset = True
+
+    # Create training and validation datasets
+    train_set = create_dataset(FLAGS.train_files.split(','),
+                               batch_size=FLAGS.train_batch_size,
+                               enable_cache=FLAGS.feature_cache and do_cache_dataset,
+                               cache_path=FLAGS.feature_cache,
+                               train_phase=True)
+
+    iterator = tfv1.data.Iterator.from_structure(tfv1.data.get_output_types(train_set),
+                                                 tfv1.data.get_output_shapes(train_set),
+                                                 output_classes=tfv1.data.get_output_classes(train_set))
+
+    # Make initialization ops for switching between the two sets
+    train_init_op = iterator.make_initializer(train_set)
+    # Dropout
+    dropout_rates = [tfv1.placeholder(tf.float32, name='dropout_{}'.format(i)) for i in range(6)]
+
+    # Building the graph
+    optimizer = create_optimizer()
+
+    # # Enable mixed precision training
+    # if FLAGS.automatic_mixed_precision:
+    #     log_info('Enabling automatic mixed precision training.')
+    #     optimizer = tfv1.train.experimental.enable_mixed_precision_graph_rewrite(optimizer)
+
+    gradients, loss, non_finite_files = get_tower_results(iterator, optimizer, dropout_rates)
+    # print(gradients, loss, non_finite_files)
+    # Average tower gradients across GPUs
+    # avg_tower_gradients = average_gradients(gradients)
+    # log_grads_and_vars(avg_tower_gradients)
+
+    # global_step is automagically incremented by the optimizer
+    # global_step = tfv1.train.get_or_create_global_step()
+    # apply_gradient_op = optimizer.apply_gradients(avg_tower_gradients, global_step=global_step)
+
+    # Summaries
+    step_summaries_op = tfv1.summary.merge_all('step_summaries')
+    step_summary_writers = {
+        'train': tfv1.summary.FileWriter(os.path.join(FLAGS.summary_dir, 'train'), max_queue=120),
+        'dev': tfv1.summary.FileWriter(os.path.join(FLAGS.summary_dir, 'dev'), max_queue=120)
+    }
+
+    variables_to_restore = [var for var in tfv1.global_variables() if not var.name.startswith('layer_6b')]
+    checkpoint_saver = tfv1.train.Saver(variables_to_restore, max_to_keep=FLAGS.max_to_keep)
+
+    all_saver = tfv1.train.Saver()
+
+    initializer = tfv1.global_variables_initializer()
+
+
+
+    with tfv1.Session(config=Config.session_config) as session:
+        tfv1.get_default_graph().finalize()
+        session.run(initializer)
+        loaded = try_loading(session, checkpoint_saver, 'checkpoint', 'most recent', load_step=False)
+        if loaded:
+            print("Sucessfully loaded old model")
+        else:
+            print("Failed to load model, exiting")
+            sys.exit(0)
+        saved = all_saver.save(session, 'new-checkpoint-transfer/test')
+        if saved:
+            print("Sucessfully saved new model")
+        else:
+            print("Failed to save model, exiting")
+            sys.exit(0)
+
+
 def main(_):
     initialize_globals()
+
+    if FLAGS.replace_output_layer:
+        replace_output_layer()
+        sys.exit(0)
 
     if FLAGS.train_files:
         tfv1.reset_default_graph()

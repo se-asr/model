@@ -165,3 +165,5 @@ def create_flags():
     f.register_validator('one_shot_infer',
                          lambda value: not value or os.path.isfile(value),
                          message='The file pointed to by --one_shot_infer must exist and be readable.')
+
+    f.DEFINE_boolean('replace_output_layer', False, 'replace the output layer with an output layer with 3 more nodes')
