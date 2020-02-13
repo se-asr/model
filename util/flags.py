@@ -167,3 +167,4 @@ def create_flags():
                          message='The file pointed to by --one_shot_infer must exist and be readable.')
 
     f.DEFINE_boolean('replace_output_layer', False, 'replace the output layer with an output layer with 3 more nodes')
+    f.DEFINE_string('replace_output_layer_checkpoint_dir', 'replaced-checkpoint', 'directory for storing checkpoints with replaced layers')
