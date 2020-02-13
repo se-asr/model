@@ -12,8 +12,13 @@ if [ ! -f DeepSpeech.py ]; then
 fi;
 
 if [ ! $UUID ] && [ ! $CONTINUE ]; then
-  UUID=$(uuidgen)
-  echo "Creating new model with UUID $UUID"
+  UUID=$(python name.py)
+  if [ $? -eq 0 ]; then
+    echo "Creating new model with name: $UUID"
+  else
+    echo "No names left"
+    exit 1
+  fi;
 fi;
 
 if [ -d "${MODEL_DIR}${UUID}" ] && [ ! $CONTINUE ]; then
