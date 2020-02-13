@@ -1,7 +1,7 @@
 #!/bin/sh
 
 EXPORT_DIR='/mnt/ssd/exjobb/export/'
-PRE_DIR='/mnt/ssd/exjobb/deepspeech-0.6.1-checkpoint/'
+PRE_DIR='/mnt/ssd/exjobb/transferred-checkpoint/'
 CHECKPOINT_DIR="${EXPORT_DIR}checkpoint/"
 MODEL_DIR="${EXPORT_DIR}model/"
 SUMMARY_DIR="${EXPORT_DIR}tensorboard/"
@@ -56,16 +56,13 @@ echo "Running model ${UUID}"
 python -u DeepSpeech.py \
   --train_files ../NST/train.csv \
   --dev_files ../NST/dev.csv \
-  --test_files ../NST/test.csv \
-  --train_batch_size 32 \
-  --dev_batch_size 32 \
-  --test_batch_size 32 \
+  --test_files ../NST/dev.csv \
+  --train_batch_size 64 \
+  --dev_batch_size 64 \
+  --test_batch_size 64 \
   --n_hidden 2048 \
-  --epochs 75 \
-  --early_stop True \
-  --es_steps 6 \
-  --es_mean_th 0.1 \
-  --es_std_th 0.1 \
+  --epochs 30 \
+  --noearly_stop \
   --dropout_rate 0.20 \
   --learning_rate 0.0001 \
   --report_count 100 \
@@ -73,9 +70,8 @@ python -u DeepSpeech.py \
   --checkpoint_dir "$CHECKPOINT_DIR" \
   --summary_dir "$SUMMARY_DIR" \
   --alphabet_config_path ../NST/alphabet.txt \
-  --lm_binary_path ../lm/wikilm5gramtrie.binary \
-  --lm_trie_path ../lm/wikilm5gramtrie.trie \
+  --lm_binary_path ../lm/normwiki5.binary \
+  --lm_trie_path ../lm/normwiki5.trie \
   --export_language sv \
   --use_cudnn_rnn \
-  --automatic_mixed_precision=True \
   "$@"
