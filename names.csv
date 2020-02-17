@@ -16,7 +16,6 @@ Callista_Natasi,0
 Mission_Bib,0
 Admiral_Jerec,0
 Mission_Pre,0
-Zuckuss_Talon,0
 Senator_Plo,0
 Revan_Cade,0
 Sebulba_Bossk,0
@@ -32,7 +31,6 @@ Jarael_Callista,0
 Pre_C-3PO,0
 Natasi_Barriss,0
 Durge_Savage,0
-Luke_Nom,1
 Jabba_Ki-Adi-Mundi,0
 IG_Aayla,0
 Lando_Ben,0
@@ -44,7 +42,6 @@ Plo_4-LOM,0
 Luke_C-3PO,0
 Darth_Ulic,0
 Revan_Kyle,0
-Visas_Carnor,0
 Zayne_Zam,0
 Bastila_Jabba,0
 Qui-Gon_Clone,0
@@ -98,3 +95,6 @@ Bastila_Chewbacca,0
 Qui-Gon_Sebulba,0
 Asajj_Galen,0
 Kyp_Galen,0
+Visas_Carnor,1
+Zuckuss_Talon,1
+Luke_Nom,1
