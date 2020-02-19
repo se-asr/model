@@ -61,10 +61,9 @@ python -u DeepSpeech.py \
   --train_batch_size 64 \
   --dev_batch_size 64 \
   --test_batch_size 64 \
-  --test_output_file "${MODEL_DIR}/test-output" \
   --n_hidden 2048 \
-  --epochs 75 \
-  --early_stop True \
+  --epochs 30 \
+  --noearly_stop \
   --dropout_rate 0.20 \
   --learning_rate 0.0001 \
   --report_count 100 \
@@ -72,8 +71,8 @@ python -u DeepSpeech.py \
   --checkpoint_dir "$CHECKPOINT_DIR" \
   --summary_dir "$SUMMARY_DIR" \
   --alphabet_config_path ../NST/alphabet.txt \
-  --lm_binary_path ../lm/wikilm5gramtrie.binary \
-  --lm_trie_path ../lm/wikilm5gramtrie.trie \
+  --lm_binary_path ../lm/all5.binary \
+  --lm_trie_path ../lm/all5.trie \
   --export_language sv \
   --use_cudnn_rnn \
   --automatic_mixed_precision=True \

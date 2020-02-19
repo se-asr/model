@@ -70,8 +70,8 @@ python -u DeepSpeech.py \
   --checkpoint_dir "$CHECKPOINT_DIR" \
   --summary_dir "$SUMMARY_DIR" \
   --alphabet_config_path ../NST/alphabet.txt \
-  --lm_binary_path ../lm/normwiki5.binary \
-  --lm_trie_path ../lm/normwiki5.trie \
+  --lm_binary_path ../lm/all5.binary \
+  --lm_trie_path ../lm/all5.trie \
   --augmentation_spec_dropout_keeprate 0.80 \
   --augmentation_freq_and_time_masking  \
   --augmentation_freq_and_time_masking_freq_mask_range 5 \

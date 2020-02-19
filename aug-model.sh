@@ -72,8 +72,8 @@ python -u DeepSpeech.py \
   --checkpoint_dir "$CHECKPOINT_DIR" \
   --summary_dir "$SUMMARY_DIR" \
   --alphabet_config_path ../NST/alphabet.txt \
-  --lm_binary_path ../lm/wikilm5gramtrie.binary \
-  --lm_trie_path ../lm/wikilm5gramtrie.trie \
+  --lm_binary_path ../lm/all5.binary \
+  --lm_trie_path ../lm/all5.trie \
   --export_language sv \
   --use_cudnn_rnn \
   --automatic_mixed_precision=True \
