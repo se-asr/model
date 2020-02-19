@@ -1,6 +1,6 @@
 Luminara_Gilad,0
 Wedge_Callista,0
-Joruus_Asajj,0
+Joruus_Asajj,1
 IG_IG,0
 Han_Natasi,0
 PROXY_Grand,0
@@ -72,7 +72,6 @@ Count_Greedo,0
 Emperor_Mara,0
 Yoda_Bib,0
 Ben_Watto,0
-Bossk_Prince,0
 Mission_Mara,0
 Bastila_Asajj,0
 Watto_Obi-Wan,0
@@ -80,11 +79,9 @@ Bib_Captain,0
 Prince_Kir,0
 Sebulba_R2-D2,0
 Padmé_Satele,0
-Callista_Zam,0
 Pre_Mace,0
 Kit_Watto,0
 Pre_Ben,0
-Talon_Lumiya,0
 Luminara_Jango,0
 Lando_Emperor,0
 Sebulba_Luminara,0
@@ -95,6 +92,9 @@ Bastila_Chewbacca,0
 Qui-Gon_Sebulba,0
 Asajj_Galen,0
 Kyp_Galen,0
+Callista_Zam,0
+Talon_Lumiya,1
+Bossk_Prince,1
 Visas_Carnor,1
 Zuckuss_Talon,1
 Luke_Nom,1
