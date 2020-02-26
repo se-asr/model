@@ -2,7 +2,6 @@ Luminara_Gilad,0
 Wedge_Callista,0
 IG_IG,0
 Han_Natasi,0
-PROXY_Grand,1
 Visas_Revan,0
 Exar_Sebulba,0
 Lumiya_Natasi,0
@@ -77,7 +76,7 @@ Pre_Ben,0
 Luminara_Jango,0
 Lando_Emperor,0
 Sebulba_Luminara,0
-Watto_General,0
+Watto_General,1
 Princess_Count,0
 Captain_Talon,0
 Bastila_Chewbacca,0
@@ -85,6 +84,7 @@ Qui-Gon_Sebulba,0
 Asajj_Galen,0
 Kyp_Galen,0
 Callista_Zam,0
+PROXY_Grand,1
 Zuckuss_Carnor,1
 Nom_Asajj,1
 Bastila_Asajj,1
