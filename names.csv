@@ -21,11 +21,10 @@ Greedo_Watto,0
 Bastila_Mara,0
 4-LOM_R2-D2,0
 Chewbacca_Luminara,0
-Jango_Jacen,0
 Wedge_Lando,0
 Boba_Luminara,0
 Jarael_Callista,0
-Durge_Savage,0
+Durge_Savage,1
 Jabba_Ki-Adi-Mundi,0
 IG_Aayla,0
 Lando_Ben,0
@@ -42,7 +41,6 @@ Anakin_Kyp,0
 Watto_Cade,0
 Jabba_Qui-Gon,0
 Talon_Mace,0
-Zuckuss_Captain,1
 Joruus_Ki-Adi-Mundi,0
 Talon_Luminara,0
 Yoda_Galen,0
@@ -78,6 +76,8 @@ Bastila_Chewbacca,0
 Qui-Gon_Sebulba,0
 Kyp_Galen,0
 Callista_Zam,0
+Jango_Jacen,1
+Zuckuss_Captain,1
 Natasi_Barriss,1
 Pre_C-3PO,1
 Mission_Pre,1
