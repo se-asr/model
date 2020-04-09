@@ -11,7 +11,6 @@ Visas_C-3PO,0
 Anakin_Han,0
 Callista_Natasi,0
 Mission_Bib,0
-Admiral_Jerec,1
 Senator_Plo,0
 Revan_Cade,0
 Sebulba_Bossk,0
@@ -55,7 +54,7 @@ Prince_Kir,0
 Sebulba_R2-D2,0
 Padme_Satele,0
 Pre_Mace,0
-Kit_Watto,0
+Kit_Watto,1
 Pre_Ben,0
 Luminara_Jango,0
 Lando_Emperor,0
@@ -66,6 +65,7 @@ Bastila_Chewbacca,0
 Qui-Gon_Sebulba,0
 Kyp_Galen,0
 Callista_Zam,0
+Admiral_Jerec,1
 Yoda_Bib,1
 4-LOM_R2-D2,1
 Talon_Mace,1
