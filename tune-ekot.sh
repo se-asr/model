@@ -66,10 +66,11 @@ python -u DeepSpeech.py \
   --dev_batch_size 64 \
   --test_batch_size 64 \
   --n_hidden 2048 \
-  --epochs 15 \
+  --epochs 100 \
   --noearly_stop \
   --dropout_rate 0.30 \
   --learning_rate 0.0001 \
+  --max_to_keep 2 \
   --report_count 100 \
   --export_dir "$MODEL_DIR" \
   --checkpoint_dir "$CHECKPOINT_DIR" \
