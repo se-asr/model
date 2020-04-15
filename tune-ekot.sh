@@ -17,7 +17,11 @@ if [ ! -f DeepSpeech.py ]; then
 fi;
 
 if [ ! $UUID ] && [ ! $CONTINUE ]; then
-  UUID=$(python name.py)
+  if [ ! $MODEL_NAME ]; then
+    UUID=$(python name.py)
+  else
+    UUID="$MODEL_NAME"
+  fi;
   if [ $? -eq 0 ]; then
     echo "Creating new model with name: $UUID"
   else
@@ -58,18 +62,34 @@ mkdir "${SUMMARY_DIR}"
 
 echo "Running model ${UUID}"
 
+if [ ! $MODEL_LR ]; then
+  MODEL_LR=0.0001
+fi;
+
+if [ ! $MODEL_BATCH_SIZE ]; then
+  MODEL_BATCH_SIZE=64
+fi;
+
+if [ ! $MODEL_DROPOUT ]; then
+  MODEL_DROPOUT=0.30
+fi;
+
+echo "LR: ${MODEL_LR}"
+echo "Batch size: ${MODEL_BATCH_SIZE}"
+echo "Dropout: ${MODEL_DROPOUT}"
+
 python -u DeepSpeech.py \
   --train_files "$TRAIN_FILES" \
   --dev_files "$DEV_FILES" \
   --test_files "$TEST_FILES" \
-  --train_batch_size 64 \
+  --train_batch_size "$MODEL_BATCH_SIZE" \
   --dev_batch_size 64 \
   --test_batch_size 64 \
   --n_hidden 2048 \
   --epochs 100 \
   --noearly_stop \
-  --dropout_rate 0.30 \
-  --learning_rate 0.0001 \
+  --dropout_rate "$MODEL_DROPOUT" \
+  --learning_rate "$MODEL_LR" \
   --max_to_keep 2 \
   --report_count 100 \
   --export_dir "$MODEL_DIR" \
