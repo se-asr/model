@@ -32,7 +32,7 @@ Revan_Kyle,0
 Zayne_Zam,0
 Bastila_Jabba,0
 Qui-Gon_Clone,0
-Anakin_Kyp,0
+Anakin_Kyp,1
 Jabba_Qui-Gon,0
 Joruus_Ki-Adi-Mundi,0
 Talon_Luminara,0
@@ -50,11 +50,9 @@ Ben_Watto,0
 Mission_Mara,0
 Watto_Obi-Wan,0
 Bib_Captain,0
-Prince_Kir,0
 Sebulba_R2-D2,0
 Padme_Satele,0
 Pre_Mace,0
-Kit_Watto,1
 Pre_Ben,0
 Luminara_Jango,0
 Lando_Emperor,0
@@ -65,6 +63,8 @@ Bastila_Chewbacca,0
 Qui-Gon_Sebulba,0
 Kyp_Galen,0
 Callista_Zam,0
+Prince_Kir,1
+Kit_Watto,1
 Admiral_Jerec,1
 Yoda_Bib,1
 4-LOM_R2-D2,1
