@@ -87,7 +87,6 @@ python -u DeepSpeech.py \
   --test_batch_size 64 \
   --n_hidden 2048 \
   --epochs 100 \
-  --noearly_stop \
   --dropout_rate "$MODEL_DROPOUT" \
   --learning_rate "$MODEL_LR" \
   --max_to_keep 2 \
