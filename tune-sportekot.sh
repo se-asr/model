@@ -83,8 +83,8 @@ python -u DeepSpeech.py \
   --dev_files "$DEV_FILES" \
   --test_files "$TEST_FILES" \
   --train_batch_size "$MODEL_BATCH_SIZE" \
-  --dev_batch_size 64 \
-  --test_batch_size 64 \
+  --dev_batch_size 8 \
+  --test_batch_size 8 \
   --n_hidden 2048 \
   --epochs 100 \
   --dropout_rate "$MODEL_DROPOUT" \
