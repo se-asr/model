@@ -19,6 +19,10 @@ if [ ! "$DROPOUT" ]; then
   DROPOUT="0.20"
 fi;
 
+if [ ! "$BATCH_SIZE" ]; then
+  BATCH_SIZE=64
+fi;
+
 if [ ! $MODEL_NAME ] || [ ! $LM_NAME ]; then
   echo '$MODEL_NAME and $LM_NAME must be specified'
   exit 1
@@ -51,7 +55,7 @@ fi
 
 python -u DeepSpeech.py \
 --test_files "$TEST_FILES" \
---test_batch_size 64 \
+--test_batch_size "$BATCH_SIZE" \
 --n_hidden 2048 \
 --epochs 30 \
 --noearly_stop \
